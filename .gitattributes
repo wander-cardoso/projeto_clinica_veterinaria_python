@@ -1,0 +1,5 @@
+*.py linguist-language=Python
+
+templates/** linguist-vendored
+static/** linguist-vendored
+media/** linguist-vendored
