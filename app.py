@@ -604,7 +604,7 @@ def consulta_apagar(id):
 # ---------- CLIENTES ----------
 
 
-@app.route("/cliente_login", methods=["GET", "POST"])
+@app.route("/clientes_login", methods=["GET", "POST"])
 def cliente_login():
     if request.method == "POST":
         email = request.form["email"].strip()
