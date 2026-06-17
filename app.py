@@ -478,7 +478,6 @@ def animais_apagar(id):
     flash("Animal removido com sucesso!")
     return redirect(url_for("animais"))
 
-
 # ---------- CONSULTAS ANIMAIS ----------
 @app.route("/consultas")
 def consultas():
