@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import mysql.connector
-import os
 
+
+import os
 # ---------- BD ----------
 
 def ligar_bd():
@@ -48,7 +49,7 @@ def login():
     #request.form[username] captura o foi digitado conform o input do HTML
     if request.method == "POST":
         username = request.form["username"].strip()
-        password = request.form["password"].strip()
+        password = request.form["password"]
 
     #depois que esta salvo nas variaveis o sistema vai ate a base de dados
     #saca todos os dados dentro do select desde que o username exista e 
