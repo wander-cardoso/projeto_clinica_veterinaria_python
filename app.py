@@ -48,7 +48,7 @@ def login():
     #request.form[username] captura o foi digitado conform o input do HTML
     if request.method == "POST":
         username = request.form["username"].strip()
-        password = request.form["password"]
+        password = request.form["password"].strip()
 
     #depois que esta salvo nas variaveis o sistema vai ate a base de dados
     #saca todos os dados dentro do select desde que o username exista e 
