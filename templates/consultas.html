@@ -17,6 +17,7 @@
       <th>Diagnóstico</th>
       <th>Tratamento</th>
       <th>Criado em</th>
+      <th>Notas</th>
       {% if session.get("role") in ["admin", "staff"] %}
         <th>Ações</th>
       {% endif %}
@@ -25,12 +26,14 @@
   <tbody>
     {% for consulta in consultas %}
     <tr>
-      <td>{{ consulta.id }}</td>
-      <td>{{ consulta.animal_nome }}</td>
-      <td>{{ consulta.data_hora }}</td>
-      <td>{{ consulta.motivo }}</td>
-      <td>{{ consulta.created_at }}</td>
-
+        <td>{{ consulta.id }}</td>
+        <td>{{ consulta.animal_nome }}</td>
+        <td>{{ consulta.data_hora }}</td>
+        <td>{{ consulta.motivo }}</td>
+        <td>{{ consulta.diagnostico }}</td>
+        <td>{{ consulta.tratamento }}</td>
+        <td>{{ consulta.created_at }}</td>
+        <td>{{ consulta.notas }}</td>
       {% if session.get("role") in ["admin", "staff"] %}
       <td>
         <a href="{{ url_for('consulta_editar', id=consulta.id) }}" class="btn btn-warning btn-sm">Editar</a>

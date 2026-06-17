@@ -11,10 +11,21 @@
   <!-- 🎨 ESTILOS PERSONALIZADOS -->
   <style>
 
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
     body {
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       min-height: 100vh;
       color: #f1f1f1;
+    
+      display: flex;
+      flex-direction: column;
+    }
+    .main-content {
+    flex: 1;
     }
 
     /* NAVBAR */
@@ -112,12 +123,13 @@
 
     footer {
       color: #b0bec5;
+      margin-top: auto;
     }
 
   </style>
 </head>
 
-<body>
+<body >
 
 <!-- 🔷 NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow">
@@ -184,11 +196,13 @@
 </div>
 
 <!-- 📦 CONTEÚDO DAS PÁGINAS -->
-<div class="container my-5">
-  <div class="card-custom">
-    {% block content %}{% endblock %}
+<main class="main-content">
+  <div class="container my-5">
+    <div class="card-custom">
+      {% block content %}{% endblock %}
+    </div>
   </div>
-</div>
+</main>
 
 <!-- 🔻 FOOTER -->
 <footer class="text-center py-4 mt-5">

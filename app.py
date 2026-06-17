@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import mysql.connector
-
-
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 # ---------- BD ----------
 
 def ligar_bd():
@@ -24,8 +25,10 @@ def esta_logado():
 
 
 def exigir_admin():
-    return session.get("role") == "admin"
-
+    if session.get("role") != "admin":
+        flash("Acesso negado.")
+        return redirect(url_for("users"))
+    return None
 
 def e_staff():
     return session.get("role") == "staff"
@@ -44,6 +47,10 @@ def exigir_login():
 # ---------- LOGIN ----------
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
+    cnx = None
+    cur = None
+
     #se houver acionamento do metodo post no html atravez de um submit
     #request.form que contem os dados enviados pelo form
     #request.form[username] captura o foi digitado conform o input do HTML
@@ -70,8 +77,10 @@ def login():
             return redirect(url_for("login"))
 
         finally:
-            cur.close()
-            cnx.close()
+            if cur:
+                cur.close()
+            if cnx:
+                cnx.close()
 
         # validação simples pega o que foi salvo em fetchone para validacao
         #caso seja true ele guarda os dados abaixo na session
